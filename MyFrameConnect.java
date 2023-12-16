@@ -1,10 +1,9 @@
-package jdbc;
+
 import java.sql.*;
 
 public class MyFrameConnect{
 	private String name, gender, address, qualification, profile;
 	Connection conn;
-//	Statement stmt;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
@@ -29,11 +28,6 @@ public class MyFrameConnect{
 			
 			// Establishing connection
 			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/company", "root", "1234");
-			
-//			stmt=conn.createStatement();
-//			String s="\'"+name+"\', "+"\'"+gender+"\', "+"\'"+address+"\', "+"\'"+qualification+"\', "+"\'"+profile;
-//			String s=name+", "+gender+", "+address+", "+qualification+", "+profile;
-//			stmt.executeUpdate("INSERT INTO candidate(name, gender, address, qualification, profile) VALUE("+s+")");
 			
 			pstmt=conn.prepareStatement("INSERT INTO candidate(name, gender, address, qualification, profile) VALUE(?, ?, ?, ?, ?)");
 			pstmt.setString(1, name);
